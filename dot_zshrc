@@ -28,3 +28,111 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+
+# -- SNIPPETS -----------------------------------------------------------------
+
+# -- PLUGINS ------------------------------------------------------------------
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+_zshrc_after_load() {
+  eval "$(zoxide init zsh)"
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
+
+zinit wait lucid for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions \
+ 
+zinit light zsh-users/zsh-history-substring-search \
+
+# -- SETINGS ------------------------------------------------------------------
+
+export LS_COLORS=$(echo "$(vivid generate nord):*.plist=0;38;2;180;142;173:*.cson=0;38;2;180;142;173:\
+  *.Rmd=0;38;2;180;142;173" | sed 's/ //g')
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+
+# -- PATH ---------------------------------------------------------------------
+
+export PATH=$PATH:~/.local/bin
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# -- SYSTEM ENV ---------------------------------------------------------------
+
+export EDITOR='/Users/viggogascou/.local/bin/lvim'
+export VISUAL='$EDITOR'
+
+# -- ALIASES ------------------------------------------------------------------
+
+# ZSH ALIASES
+
+alias zshconfig='lvim ~/.zshrc'
+
+# KITTY SPECIFIC ALIASES
+
+alias icat='kitty +kitten icat'
+alias diff='kitty +kitten diff'
+alias kittytheme='kitty +kitten themes'
+alias kittyconfig='lvim ~/.config/kitty/kitty.conf'
+alias kittyupdate='~/bin_scripts/kitty_update.sh'
+
+# BIN SCRIPT ALIASES
+
+alias killicloud='~/bin_scripts/kill_icloud_drive.sh'
+alias replace_icon='~/bin_scripts/change_icon.sh'
+alias print_colors='~/bin_scripts/print_colors.sh'
+alias print_256='~/bin_scripts/print_colors_256.sh'
+alias remove_yaml='~/bin_scripts/yaml_remove.sh'
+
+# OTHER
+disable r
+alias r='radian'
+alias ls='exa --icons'
+alias py='python'
+alias ipy='ipython'
+
+# -- CONDA --------------------------------------------------------------------
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/viggogascou/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/viggogascou/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/viggogascou/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/viggogascou/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+conda activate py310
+
+# -- KEYBINDINGS --------------------------------------------------------------
+
+# alt + left arrow
+bindkey "^[b"      backward-word
+# alt + right arrow
+bindkey "^[f"      forward-word
+# cmd + left arrow
+bindkey "^[[1;9D"  beginning-of-line
+# cmd + right arrow
+bindkey "^[[1;9C"  end-of-line
+
+bindkey '^[[A'     history-substring-search-up
+bindkey '^[[B'     history-substring-search-down
+
+# -- FINAL --------------------------------------------------------------------
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
