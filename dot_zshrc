@@ -58,7 +58,6 @@ export LS_COLORS=$(echo "$(vivid generate nord):*.plist=0;38;2;180;142;173:*.cso
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-
 # -- PATH ---------------------------------------------------------------------
 
 export PATH=$PATH:~/.local/bin
