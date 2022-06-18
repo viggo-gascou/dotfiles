@@ -45,6 +45,7 @@ zinit wait lucid for \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
+  paulirish/git-open \
  
 zinit light zsh-users/zsh-history-substring-search \
 
