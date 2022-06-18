@@ -50,6 +50,8 @@ zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
 
+eval $(thefuck --alias)
+
 # Make the substring search only match if command starts with the same substring
 # Usage from: https://bit.ly/zsh-substring-hist-conf
 typeset -g HISTORY_SUBSTRING_SEARCH_PREFIXED='i'
