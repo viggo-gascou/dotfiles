@@ -31,15 +31,12 @@ zinit light-mode for \
 
 # -- SNIPPETS -----------------------------------------------------------------
 
+zinit snippet OMZP::git/git.plugin.zsh
+
 # -- PLUGINS ------------------------------------------------------------------
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-
-_zshrc_after_load() {
-  eval "$(zoxide init zsh)"
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-}
 
 zinit wait lucid for \
   atinit"zicompinit; zicdreplay" \
@@ -66,7 +63,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # -- SYSTEM ENV ---------------------------------------------------------------
 
-export EDITOR='/Users/viggogascou/.local/bin/lvim'
+export EDITOR='lvim'
 export VISUAL='$EDITOR'
 
 # -- ALIASES ------------------------------------------------------------------
@@ -120,18 +117,20 @@ conda activate py310
 # -- KEYBINDINGS --------------------------------------------------------------
 
 # alt + left arrow
-bindkey "^[b"      backward-word
+#bindkey "^[b"      backward-word
 # alt + right arrow
-bindkey "^[f"      forward-word
+#bindkey "^[f"      forward-word
 # cmd + left arrow
-bindkey "^[[1;9D"  beginning-of-line
+#bindkey "^[[1;9D"  beginning-of-line
 # cmd + right arrow
-bindkey "^[[1;9C"  end-of-line
+#bindkey "^[[1;9C"  end-of-line
 
 bindkey '^[[A'     history-substring-search-up
 bindkey '^[[B'     history-substring-search-down
 
 # -- FINAL --------------------------------------------------------------------
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
