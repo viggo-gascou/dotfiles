@@ -29,6 +29,9 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+
+#export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
+
 # -- SNIPPETS -----------------------------------------------------------------
 
 zinit snippet OMZP::git/git.plugin.zsh
@@ -51,6 +54,7 @@ zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
 
+
 eval $(thefuck --alias)
 
 # Make the substring search only match if command starts with the same substring
@@ -61,6 +65,7 @@ export LS_COLORS=$(echo "$(vivid generate nord):*.plist=0;38;2;180;142;173:*.cso
   *.Rmd=0;38;2;180;142;173" | sed 's/ //g')
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 
 # -- PATH ---------------------------------------------------------------------
 
@@ -72,6 +77,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export EDITOR='lvim'
 export VISUAL='$EDITOR'
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # -- ALIASES ------------------------------------------------------------------
 
