@@ -6,6 +6,17 @@ fi
 
 # -- ZINIT --------------------------------------------------------------------
 
+# MOVE ZCOMPDUMP AND SPEED UP LOADING
+# FROM ZINIT README
+# see zshcompsys(1) 'man zshcopsys' for meaning of '-C' option
+declare -A ZINIT
+ZINIT[ZCOMPDUMP_PATH]="${HOME}/.cache/zsh/.zcompdump-$ZSH_VERSION"
+ZINIT[COMPINIT_OPTS]="-C"
+
+# MOVE ZCOMPCACHE
+zstyle ':completion::complete:*' cache-path "${HOME}/.cache/zsh/.zcompcache"
+
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -28,9 +39,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
-
-
-#export ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump"
 
 # -- SNIPPETS -----------------------------------------------------------------
 
