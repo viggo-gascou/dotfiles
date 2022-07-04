@@ -62,7 +62,6 @@ zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
 
-
 eval $(thefuck --alias)
 
 # Make the substring search only match if command starts with the same substring
@@ -85,6 +84,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export EDITOR='lvim'
 export VISUAL='$EDITOR'
+
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export COLORTERM="truecolor"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
