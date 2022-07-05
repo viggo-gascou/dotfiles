@@ -46,6 +46,7 @@ zinit snippet OMZP::git/git.plugin.zsh
 
 # -- PLUGINS ------------------------------------------------------------------
 
+      #zsh-users/zsh-syntax-highlighting \
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
@@ -56,8 +57,14 @@ zinit wait lucid for \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
-  paulirish/git-open \
- 
+      paulirish/git-open
+
+zinit wait lucid from"gh-r" as"null" for \
+     sbin"fzf"          junegunn/fzf \
+     sbin"**/fd"        @sharkdp/fd \
+     sbin"**/bat"       @sharkdp/bat \
+     sbin"bin/exa"       ogham/exa
+
 zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
@@ -161,3 +168,4 @@ bindkey '^[[B'     history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
