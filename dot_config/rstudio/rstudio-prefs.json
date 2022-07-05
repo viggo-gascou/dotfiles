@@ -1,0 +1,10 @@
+{
+    "rmd_preferred_template_path": "/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/learnr/rmarkdown/templates/tutorial",
+    "rmd_viewer_type": "pane",
+    "initial_working_directory": "~",
+    "syntax_color_console": true,
+    "posix_terminal_shell": "bash",
+    "jobs_tab_visibility": "shown",
+    "rainbow_parentheses": true,
+    "editor_theme": "One Dark Pro"
+}
