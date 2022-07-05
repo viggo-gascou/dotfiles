@@ -46,7 +46,6 @@ zinit snippet OMZP::git/git.plugin.zsh
 
 # -- PLUGINS ------------------------------------------------------------------
 
-      #zsh-users/zsh-syntax-highlighting \
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
