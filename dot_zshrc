@@ -101,7 +101,11 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # ZSH ALIASES
 
-alias zshconfig='lvim ~/.zshrc'
+alias zshconfig='chezmoi edit ~/.zshrc'
+
+# LUNARVIM ALIASES
+
+alias lunarconfig='chezmoi edit ~/.config/lvim/config.lua'
 
 # KITTY SPECIFIC ALIASES
 
