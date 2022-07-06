@@ -165,7 +165,12 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
   { "fladson/vim-kitty" },
   { "arcticicestudio/nord-vim" },
-
+  {
+    "Lilja/vim-chezmoi",
+    config = function()
+      vim.g.chezmoi = "enabled"
+    end
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
