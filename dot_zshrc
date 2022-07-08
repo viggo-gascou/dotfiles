@@ -40,21 +40,19 @@ zinit light-mode for \
 
 # -- SNIPPETS -----------------------------------------------------------------
 
-zinit snippet OMZP::git/git.plugin.zsh
-
 # -- PLUGINS ------------------------------------------------------------------
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-zinit wait lucid for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
+zinit wait lucid light-mode for \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
-      paulirish/git-open
+  wfxr/forgit \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
 
 zinit wait lucid from"gh-r" as"null" for \
      sbin"fzf"          junegunn/fzf \
@@ -81,8 +79,6 @@ zstyle ':completion:*' menu select
 # -- PATH ---------------------------------------------------------------------
 
 export PATH=$PATH:~/.local/bin
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # -- SYSTEM ENV ---------------------------------------------------------------
 
@@ -99,20 +95,17 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # -- ALIASES ------------------------------------------------------------------
 
-# ZSH ALIASES
+# CONFIG ALIASES
 
 alias zshconfig='chezmoi edit ~/.zshrc'
-
-# LUNARVIM ALIASES
-
 alias lunarconfig='chezmoi edit ~/.config/lvim/config.lua'
+alias kittyconfig='chezmoi edit ~/.config/kitty/kitty.conf'
 
 # KITTY SPECIFIC ALIASES
 
 alias icat='kitty +kitten icat'
 alias diff='kitty +kitten diff'
 alias kittytheme='kitty +kitten themes'
-alias kittyconfig='lvim ~/.config/kitty/kitty.conf'
 alias kittyupdate='~/bin_scripts/kitty_update.sh'
 
 # BIN SCRIPT ALIASES
@@ -129,6 +122,7 @@ alias r='radian'
 alias ls='exa --icons'
 alias py='python'
 alias ipy='ipython'
+alias gp='git push'
 
 # -- CONDA --------------------------------------------------------------------
 
