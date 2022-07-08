@@ -10,7 +10,6 @@ fi
 HISTFILE="${HOME}/.cache/zsh/.zsh_history"
 setopt sharehistory
 
-
 # MOVE ZCOMPDUMP AND SPEED UP LOADINGbat
 # FROM ZINIT README
 # see zshcompsys(1) 'man zshcompsys' for meaning of '-C' option
@@ -126,6 +125,7 @@ alias ls='exa --icons'
 alias py='python'
 alias ipy='ipython'
 alias gp='git push'
+alias cm='chezmoi'
 
 # -- CONDA --------------------------------------------------------------------
 
