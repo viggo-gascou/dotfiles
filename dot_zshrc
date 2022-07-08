@@ -6,7 +6,12 @@ fi
 
 # -- ZINIT --------------------------------------------------------------------
 
-# MOVE ZCOMPDUMP AND SPEED UP LOADING
+# MOVE ZSH_HISTORY
+HISTFILE="${HOME}/.cache/zsh/.zsh_history"
+setopt sharehistory
+
+
+# MOVE ZCOMPDUMP AND SPEED UP LOADINGbat
 # FROM ZINIT README
 # see zshcompsys(1) 'man zshcompsys' for meaning of '-C' option
 declare -A ZINIT
