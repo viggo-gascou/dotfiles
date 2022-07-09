@@ -1,3 +1,14 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*- mode: dsc; -*-
+
+# ~/.lintr
+# =============================================================================
+# Used by R to determine the default linting behaviour.
+#
+# See https://lintr.r-lib.org/reference/linters.html
+
+
 linters: with_defaults(
   line_length_linter(120), 
   single_quotes_linter = NULL,
