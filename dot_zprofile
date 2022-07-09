@@ -1,3 +1,13 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:sh-*-
+
+# ~/.zprofile
+# =============================================================================
+# Executed by Z shell for login shells.
+#
+# See http://zsh.sourceforge.net/Intro/intro_3.html
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
