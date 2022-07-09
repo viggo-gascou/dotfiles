@@ -1,3 +1,13 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:sh-*-
+
+# ~/.zshenv
+# =============================================================================
+# Executed by Z shell for all shells unless -f option is set.
+#
+# See http://zsh.sourceforge.net/Intro/intro_3.html
+
 skip_global_compinit=1
 . "$HOME/.cargo/env"
 SHELL_SESSIONS_DISABLE=1
