@@ -23,10 +23,6 @@
     # Specify the email address of the author/committer.
     email = "{{ .email }}"
 
-
-[credential "https://dev.azure.com"]
-	  useHttpPath = true
-
 [init]
 	  defaultBranch = main
 
