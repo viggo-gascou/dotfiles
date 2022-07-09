@@ -1,3 +1,13 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:sh-*-
+
+# ~/.zshrc
+# =============================================================================
+# Executed by Z shell for interactive shells.
+#
+# See http://zsh.sourceforge.net/
+
 # -- INIT ---------------------------------------------------------------------
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
