@@ -20,7 +20,11 @@ fi
 HISTFILE="${HOME}/.cache/zsh/.zsh_history"
 setopt sharehistory
 
-# MOVE ZCOMPDUMP AND SPEED UP LOADINGbat
+# Make alt jumping through words treat $WORDCHARS as word delimiters i.e., the bash default 
+autoload -U select-word-style
+select-word-style bash
+
+# MOVE ZCOMPDUMP AND SPEED UP LOADING
 # FROM ZINIT README
 # see zshcompsys(1) 'man zshcompsys' for meaning of '-C' option
 declare -A ZINIT
@@ -82,13 +86,13 @@ zinit light zsh-users/zsh-history-substring-search \
 # Usage from: https://bit.ly/zsh-substring-hist-conf
 typeset -g HISTORY_SUBSTRING_SEARCH_PREFIXED='i'
 
+# Create LS_COLORS colorscheme from vivid colorscheme generator
 export LS_COLORS=$(echo "$(vivid generate jellybeans):*.plist=0;38;2;218;208;133:*.cson=0;38;2;218;208;133:\
   *.Rmd=0;38;2;218;208;133" | sed 's/ //g')
 
+# Make the <tab> completion have the same colorscheme as $LS_COLORS and enable arrow-keys to move around
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
-
-export BAT_PAGER='less -+X'
 
 # -- PATH ---------------------------------------------------------------------
 
