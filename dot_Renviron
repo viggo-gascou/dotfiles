@@ -1,0 +1,2 @@
+R_PROFILE_USER="~/.config/R/Rprofile"
+R_HISTFILE="~/.cache/R/Rhistory"
