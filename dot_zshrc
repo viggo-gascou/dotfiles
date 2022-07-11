@@ -87,12 +87,17 @@ zinit light zsh-users/zsh-history-substring-search \
 typeset -g HISTORY_SUBSTRING_SEARCH_PREFIXED='i'
 
 # Create LS_COLORS colorscheme from vivid colorscheme generator
-export LS_COLORS=$(echo "$(vivid generate jellybeans):*.plist=0;38;2;218;208;133:*.cson=0;38;2;218;208;133:\
-  *.Rmd=0;38;2;218;208;133" | sed 's/ //g')
+export LS_COLORS="$(vivid generate ~/.config/vivid/themes/nord.yml)"
 
 # Make the <tab> completion have the same colorscheme as $LS_COLORS and enable arrow-keys to move around
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select
+
+# Complete . and .. special directories
+zstyle ':completion:*' special-dirs true
+
+# Make <tab> completion case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # -- PATH ---------------------------------------------------------------------
 
@@ -134,7 +139,8 @@ alias print_colors='~/bin_scripts/print_colors.sh'
 alias print_256='~/bin_scripts/print_colors_256.sh'
 alias remove_yaml='~/bin_scripts/yaml_remove.sh'
 
-# OTHER
+# PROGRAMS
+
 disable r
 alias r='radian'
 alias ls='exa --icons'
@@ -142,6 +148,15 @@ alias py='python'
 alias ipy='ipython'
 alias gp='git push'
 alias cm='chezmoi'
+
+# NAVIGATION
+# For enabling 'cd ...' etc. to jump up multiple levels - taken from OMZ/lib/directories.zsh script
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
 
 # -- CONDA --------------------------------------------------------------------
 
@@ -164,17 +179,10 @@ conda activate py310
 
 # -- KEYBINDINGS --------------------------------------------------------------
 
-# alt + left arrow
-#bindkey "^[b"      backward-word
-# alt + right arrow
-#bindkey "^[f"      forward-word
-# cmd + left arrow
-#bindkey "^[[1;9D"  beginning-of-line
-# cmd + right arrow
-#bindkey "^[[1;9C"  end-of-line
-
 bindkey '^[[A'     history-substring-search-up
 bindkey '^[[B'     history-substring-search-down
+
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
 # -- FINAL --------------------------------------------------------------------
 
