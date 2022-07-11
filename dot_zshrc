@@ -148,6 +148,7 @@ alias py='python'
 alias ipy='ipython'
 alias gp='git push'
 alias cm='chezmoi'
+alias man='batman'
 
 # NAVIGATION
 # For enabling 'cd ...' etc. to jump up multiple levels - taken from OMZ/lib/directories.zsh script
