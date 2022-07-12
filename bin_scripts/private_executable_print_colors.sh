@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 print_help() {
-    BOLD='\033[1mbold\033[0m' # bold
-    ITALIC='\033[3mitalic\033[0m' # italic
-    UNDERLINED='\033[4munderlined\033[0m' # underlined
+    BOLD='\033[1m' # bold
+    ITALIC='\033[3m' # italic
+    UNDERLINE='\033[4m' # underlined
     
     LINK='\033[34;4m' # blue underlined
     NC='\033[0m' # No Color
@@ -19,17 +19,17 @@ print_help() {
     echo
     echo -e "    print_colors --help                   Display this help message"
     echo 
-    echo -e "    print_colors -b                       Display the colors with ${BOLD} text" 
+    echo -e "    print_colors -b                       Display the colors with ${BOLD}bold${NC} text" 
     echo
-    echo -e "    print_colors --bold                   Display the colors with ${BOLD} text" 
+    echo -e "    print_colors --bold                   Display the colors with ${BOLD}bold${NC} text" 
     echo
-    echo -e "    print_colors -u                       Display the colors with ${UNDERLINED} text"
+    echo -e "    print_colors -u                       Display the colors with ${UNDERLINE}underlined${NC} text"
     echo
-    echo -e "    print_colors --underlined             Display the colors with ${UNDERLINED} text"
+    echo -e "    print_colors --underline              Display the colors with ${UNDERLINE}underlined${NC} text"
     echo
-    echo -e "    print_colors -i                       Display the colors with ${ITALIC} text"
+    echo -e "    print_colors -i                       Display the colors with ${ITALIC}italic${NC} text"
     echo
-    echo -e "    print_colors --italic                 Display the colors with ${ITALIC} text"
+    echo -e "    print_colors --italic                 Display the colors with ${ITALIC}italic${NC} text"
     echo
     echo -e "Created by ${LINK}https://github.com/viggo-gascou${NC}"
 }
