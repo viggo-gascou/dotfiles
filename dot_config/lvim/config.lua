@@ -173,16 +173,27 @@ lvim.plugins = {
   },
 }
 
+vim.api.nvim_command('augroup nord-theme-overrides')
+vim.api.nvim_command('autocmd!')
+vim.api.nvim_command('autocmd ColorScheme nord highlight Folded cterm=italic,bold ctermbg=0 ctermfg=12 guibg=#3B4252 guifg=#81A1C1')
+vim.api.nvim_command('autocmd ColorScheme nord highlight Comment ctermfg=12 guifg=#81A1C1')
+vim.api.nvim_command('autocmd ColorScheme nord highlight Search ctermbg=3 ctermfg=0 guibg=#EBCB8B guifg=#3B4252')
+vim.api.nvim_command('autocmd ColorScheme nord highlight IncSearch ctermbg=8 guibg=#4C566A')
+vim.api.nvim_command('augroup END')
+
+
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
 --   -- enable wrap mode for json files only
 --   command = "setlocal wrap",
 -- })
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "zsh",
+  callback = function()
+    -- let treesitter use bash highlight for zsh files as well
+    require("nvim-treesitter.highlight").attach(0, "bash")
+  end,
+})
