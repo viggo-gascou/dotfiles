@@ -18,7 +18,6 @@ fi
 
 # MOVE ZSH_HISTORY
 HISTFILE="${HOME}/.cache/zsh/.zsh_history"
-setopt sharehistory
 
 # Make alt jumping through words treat $WORDCHARS as word delimiters i.e., the bash default 
 autoload -U select-word-style
@@ -81,6 +80,16 @@ zinit wait lucid from"gh-r" as"null" for \
 zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
+
+# History file settings
+HISTSIZE=50000
+SAVEHIST=10000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt sharehistory
 
 # Make the substring search only match if command starts with the same substring
 # Usage from: https://bit.ly/zsh-substring-hist-conf
