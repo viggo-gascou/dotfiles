@@ -61,6 +61,7 @@ zinit light-mode for \
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-history-substring-search
 
 zinit wait lucid light-mode for \
   atload"_zsh_autosuggest_start" \
@@ -75,16 +76,14 @@ zinit wait lucid from"gh-r" as"null" for \
      sbin"fzf"          junegunn/fzf \
      sbin"**/fd"        @sharkdp/fd \
      sbin"**/bat"       @sharkdp/bat \
-     sbin"bin/exa"       ogham/exa
+     sbin"bin/exa"      ogham/exa
 
-zinit light zsh-users/zsh-history-substring-search \
 
 # -- SETINGS ------------------------------------------------------------------
 
 # History file settings
 HISTSIZE=50000
 SAVEHIST=10000
-setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -147,6 +146,12 @@ alias replace_icon='~/bin_scripts/change_icon.sh'
 alias print_colors='~/bin_scripts/print_colors.sh'
 alias print_256='~/bin_scripts/print_colors_256.sh'
 alias remove_yaml='~/bin_scripts/yaml_remove.sh'
+
+chezmoi-cd() {
+  cd $(chezmoi source-path)
+}
+
+alias cm-cd='chezmoi-cd'
 
 # PROGRAMS
 
