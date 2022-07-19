@@ -28,10 +28,10 @@
 
 [user]
     # Specify the username of the author/committer.
-    name = "{{- .name -}}"
-    
+    name = {{ .name | quote }}
+
     # Specify the email address of the author/committer.
-    email = "{{- .email -}}"
+    email = {{ .email | quote }}
 
 [init]
 	  defaultBranch = main
