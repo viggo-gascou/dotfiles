@@ -124,9 +124,10 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export NVM_DIR="$HOME/.config/nvm"
+# See https://github.com/nvm-sh/nvm/issues/1978
 function _install_nvm() {
   unset -f nvm npm node
-  # Set up "nvm" could use "--no-use" to defer setup, but we are here to use it
+  # Set up "nvm" could use "--no-use" to defer setup, but this is still kinda slow
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   "$@"
