@@ -2,7 +2,9 @@
 # 
 # -*-mode:conf-toml-*- vim:ft=toml
 #
-# inspired by https://github.com/renemarc/dotfiles/.chezmoi.toml.tmpl
+# Inspired by
+#     https://github.com/renemarc/dotfiles/blob/master/.chezmoi.toml.tmpl
+#     https://github.com/felipecrs/dotfiles/blob/master/home/.chezmoi.yaml.tmpl 
 # 
 # ~/.local/share/chezmoi/.chezmoi.toml.tmpl
 # =============================================================================
@@ -15,12 +17,57 @@
 #
 # {{- /* This file supports Go's text/template language. */}}
 
-# {{- $email := promptString "Git email address for the author/committer" }}
-# {{- $name := promptString "Git username for the author/committer" }}
+{{- $email := "" }} 
+{{- $username := "" }}
+
+{{- $question := "❔ Access 1Password to get the default GitHub email and username? y/n" -}}
+{{- $answer := "" -}}
+{{- $answer = promptString $question -}}
+{{- if eq $answer "y" "yes" "Y" "Yes" -}}
+{{-   writeToStdout (printf "⏳ Getting the default values from 1Password. \nHold on...\n") -}}
+{{-   $email = (onepasswordDetailsFields "Github_doc_e").notesPlain.value -}}
+{{-   $username = (onepasswordDetailsFields "Github_doc_u").notesPlain.value -}}
+{{-   writeToStdout (printf "\n✅ GitHub email set as '%s'\n" $email) -}}
+{{-   writeToStdout (printf "✅ GitHub username set as '%s'\n" $username) -}}
+{{-   writeToStdout "\nRemember to sign-out of 1Password using 'op signout'!\n" -}}
+{{-   writeToStdout "Also lock the 1Password application!"}}
+{{- end -}}
+{{- if eq $answer "n" "no" "N" "No" -}}
+{{-   $question := "\n❔ What is your email" -}}
+{{-   $answer2 := "" -}}
+{{-   if $email -}}
+{{-     $answer2 = promptString $question $email -}}
+{{-   else -}}
+{{-     $answer2 = promptString $question -}}
+{{-   end -}}
+{{-     $answer2 = lower $answer2 -}}
+{{-     $email = $answer2 -}}
+{{-   $question := "❔ What is your username" -}}
+{{-   $answer2 := "" -}}
+{{-   if $username -}}
+{{-     $answer2 = promptString $question $username -}}
+{{-   else -}}
+{{-     $answer2 = promptString $question -}}
+{{-   end -}}
+{{-     $answer2 = lower $answer2 -}}
+{{-     $username = $answer2 -}}
+{{-     writeToStdout (printf "\n✅ GitHub email set as '%s'\n" $email) -}}
+{{-     writeToStdout (printf "✅ GitHub username set as '%s'" $username) -}}
+{{- else -}}
+{{- /* Checking if the user has entered an email or not */ -}}
+{{-   if $email -}}
+{{-     writeToStdout (print "\n")}}
+{{-   else -}}
+{{-     writeToStdout (printf "\n❌ Answer not 'y' or 'n' \nExiting...\n\n") -}}
+{{-     exit 1 -}}
+{{-   end -}}
+{{- end }}
 
 [data]
-    email = "{{- $email -}}"
-    name = "{{- $name -}}"
+    email = "{{ $email }}"
+    name = "{{ $username }}"
 
 [edit]
     command = "lvim"
+
+
