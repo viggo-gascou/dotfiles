@@ -63,21 +63,20 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-history-substring-search
 
+zinit wait lucid from"gh-r" as"null" for \
+  sbin"fzf"          junegunn/fzf \
+  sbin"**/fd"        @sharkdp/fd \
+  sbin"**/bat"       @sharkdp/bat \
+  sbin"bin/exa"      ogham/exa \
+
 zinit wait lucid light-mode for \
+  wfxr/forgit \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
-  wfxr/forgit \
   atinit"zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
-
-zinit wait lucid from"gh-r" as"null" for \
-     sbin"fzf"          junegunn/fzf \
-     sbin"**/fd"        @sharkdp/fd \
-     sbin"**/bat"       @sharkdp/bat \
-     sbin"bin/exa"      ogham/exa
-
 
 # -- SETINGS ------------------------------------------------------------------
 
@@ -123,6 +122,27 @@ export COLORTERM="truecolor"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+export NVM_DIR="$HOME/.config/nvm"
+function _install_nvm() {
+  unset -f nvm npm node
+  # Set up "nvm" could use "--no-use" to defer setup, but we are here to use it
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  "$@"
+}
+
+function nvm() {
+    _install_nvm nvm "$@"
+}
+
+function npm() {
+    _install_nvm npm "$@"
+}
+
+function node() {
+    _install_nvm node "$@"
+}
 
 # -- ALIASES ------------------------------------------------------------------
 
