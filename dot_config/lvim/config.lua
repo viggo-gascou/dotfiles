@@ -87,6 +87,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "r",
   "html",
   "css",
+  "toml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
