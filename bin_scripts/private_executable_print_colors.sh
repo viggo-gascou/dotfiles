@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 print_help() {
-='\033[1m' #
-   ='\033[3m' #
-    UNDERLINE='\033[4m' #
+    BOLD='\033[1m'
+    ITALIC='\033[3m'
+    UNDERLINE='\033[4m'
     
-    LINK='\033[34;4m' # blue
+    LINK='\033[34;4m' # blue underlined
     NC='\033[0m' # No Color
     echo
     echo -e "\t\t\t\t ${BOLD} Sample colors ${NC}"
