@@ -2,7 +2,7 @@
 
 # -*-mode:sh-*- vim:ft=shell-script
 
-# ~/.config/nnn/.nnn_settings
+# ~/.config/nnn/nnn_settings
 # =============================================================================
 # Settings for the nnn TUI file browser sourced by ~/.zshrc
 #
