@@ -1,0 +1,68 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:sh-*- vim:ft=shell-script
+
+# ~/.config/zsh/.zsh_aliases
+# =============================================================================
+# Shell aliases sourced by ~/.zshrc
+#
+
+
+# CONFIG ALIASES
+
+alias zshconfig='chezmoi edit ~/.zshrc'
+alias lunarconfig='chezmoi edit ~/.config/lvim/config.lua'
+alias kittyconfig='chezmoi edit ~/.config/kitty/kitty.conf'
+
+# KITTY SPECIFIC ALIASES
+
+alias icat='kitty +kitten icat'
+alias diff='kitty +kitten diff'
+alias kittytheme='kitty +kitten themes'
+alias kittyupdate='~/bin_scripts/kitty_update.sh'
+
+# BIN SCRIPT ALIASES
+
+alias killicloud='~/bin_scripts/kill_icloud_drive.sh'
+alias replace_icon='~/bin_scripts/change_icon.sh'
+alias print_colors='~/bin_scripts/print_colors.sh'
+alias print_256='~/bin_scripts/print_colors_256.sh'
+alias remove_yaml='~/bin_scripts/yaml_remove.sh'
+
+# CHEZMOI FUNCTION ALIASES
+
+alias cm-cd='chezmoi-cd'
+
+# PROGRAMS
+
+disable r
+alias r='radian'
+alias ls='lsd'
+alias py='python'
+alias ipy='ipython'
+alias gp='git push'
+alias cm='chezmoi'
+alias man='batman'
+
+# NAVIGATION
+
+# For enabling 'cd ...' etc. to jump up multiple levels - taken from OMZ/lib/directories.zsh script
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+# TIME ALIASES
+
+# Gets local/UTC date and time in format DD-MM-YYYY and hh:mm:ss
+alias now='date +"%d-%m-%Y Time %H:%M:%S"'
+alias unow='date -u +"%d-%m-%Y Time %H:%M:%S"'
+
+# Gets date in DD-MM-YYYY format
+alias nowdate='date +"%d-%m-%Y"'
+alias unowdate='date -u +"%d-%m-%Y"'
+
+# Gets time in hh:mm:ss format
+alias nowtime='date +"%T"'
+alias unowtime='date -u +"%T"'
