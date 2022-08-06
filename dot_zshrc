@@ -88,43 +88,6 @@ zinit wait lucid light-mode for \
   atinit"zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
 
-# -- NNN SETTINGS -------------------------------------------------------------
-
-BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
-export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-export NNN_PLUG="p:preview-tui-cust;o:fzopen;c:fzcd;l:getplugs;"
-export NNN_FIFO="/tmp/nnn.fifo"
-n ()
-{
-    # Block nesting of nnn in subshells
-    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
-        echo "nnn is already running"
-        return
-    fi
-
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The backslash allows one to alias n to nnn if desired without making an
-    # infinitely recursive alias
-    \nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
-
 # -- SETINGS ------------------------------------------------------------------
 
 # History file settings
@@ -175,75 +138,24 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export NVM_DIR="$HOME/.config/nvm"
-# See https://github.com/nvm-sh/nvm/issues/1978
-function _install_nvm() {
-  unset -f nvm npm node
-  # Set up "nvm" could use "--no-use" to defer setup, but this is still kinda slow
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  "$@"
-}
 
-function nvm() {
-    _install_nvm nvm "$@"
-}
+# -- NNN SETTINGS -------------------------------------------------------------
 
-function npm() {
-    _install_nvm npm "$@"
-}
+if [ -f "$XDG_CONFIG_HOME"/nnn/nnn_settings ]; then
+  source "$XDG_CONFIG_HOME"/nnn/nnn_settings
+fi
 
-function node() {
-    _install_nvm node "$@"
-}
+# -- FUNCTIONS ----------------------------------------------------------------
+
+if [ -f "$XDG_CONFIG_HOME"/zsh/zsh_functions ]; then
+  source "$XDG_CONFIG_HOME"/zsh/zsh_functions
+fi
 
 # -- ALIASES ------------------------------------------------------------------
 
-# CONFIG ALIASES
-
-alias zshconfig='chezmoi edit ~/.zshrc'
-alias lunarconfig='chezmoi edit ~/.config/lvim/config.lua'
-alias kittyconfig='chezmoi edit ~/.config/kitty/kitty.conf'
-
-# KITTY SPECIFIC ALIASES
-
-alias icat='kitty +kitten icat'
-alias diff='kitty +kitten diff'
-alias kittytheme='kitty +kitten themes'
-alias kittyupdate='~/bin_scripts/kitty_update.sh'
-
-# BIN SCRIPT ALIASES
-
-alias killicloud='~/bin_scripts/kill_icloud_drive.sh'
-alias replace_icon='~/bin_scripts/change_icon.sh'
-alias print_colors='~/bin_scripts/print_colors.sh'
-alias print_256='~/bin_scripts/print_colors_256.sh'
-alias remove_yaml='~/bin_scripts/yaml_remove.sh'
-
-chezmoi-cd() {
-  cd $(chezmoi source-path)
-}
-
-alias cm-cd='chezmoi-cd'
-
-# PROGRAMS
-
-disable r
-alias r='radian'
-alias ls='lsd'
-alias py='python'
-alias ipy='ipython'
-alias gp='git push'
-alias cm='chezmoi'
-alias man='batman'
-
-# NAVIGATION
-# For enabling 'cd ...' etc. to jump up multiple levels - taken from OMZ/lib/directories.zsh script
-
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-
+if [ -f "$XDG_CONFIG_HOME"/zsh/zsh_aliases ]; then
+    source "$XDG_CONFIG_HOME"/zsh/zsh_aliases
+fi
 
 # -- CONDA --------------------------------------------------------------------
 
@@ -264,7 +176,7 @@ unset __conda_setup
 
 conda activate py310
 
-# -- KEYBINDINGS --------------------------------------------------------------
+# -- KEYBINDS --------------------------------------------------------------
 
 bindkey '^[[A'     history-substring-search-up
 bindkey '^[[B'     history-substring-search-down
