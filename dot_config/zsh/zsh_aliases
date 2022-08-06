@@ -66,3 +66,4 @@ alias unowdate='date -u +"%d-%m-%Y"'
 # Gets time in hh:mm:ss format
 alias nowtime='date +"%T"'
 alias unowtime='date -u +"%T"'
+
