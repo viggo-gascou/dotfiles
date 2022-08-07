@@ -8,7 +8,7 @@
 # =============================================================================
 # Custom Apple defaults script 
 #
-# Reference https://github.com/mathiasbynens/dotfiles/blob/c886e139233320e29fd882960ba3dd388d57afd7/.macos
+# Reference https://mths.be/macos --> if link dead: https://bit.ly/dot_macos
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
