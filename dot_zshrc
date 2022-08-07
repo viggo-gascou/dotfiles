@@ -141,8 +141,8 @@ export NVM_DIR="$HOME/.config/nvm"
 
 # -- NNN SETTINGS -------------------------------------------------------------
 
-if [ -f "$XDG_CONFIG_HOME"/nnn/nnn_settings ]; then
-  source "$XDG_CONFIG_HOME"/nnn/nnn_settings
+if [ -f "$XDG_CONFIG_HOME"/zsh/nnn_settings ]; then
+  source "$XDG_CONFIG_HOME"/zsh/nnn_settings
 fi
 
 # -- FUNCTIONS ----------------------------------------------------------------
