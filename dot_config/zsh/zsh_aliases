@@ -2,7 +2,7 @@
 
 # -*-mode:sh-*- vim:ft=shell-script
 
-# ~/.config/zsh/.zsh_aliases
+# ~/.config/zsh/zsh_aliases
 # =============================================================================
 # Shell aliases sourced by ~/.zshrc
 #
