@@ -139,6 +139,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export NVM_DIR="$HOME/.config/nvm"
 
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME"/node/node_repl_history
+
 # -- NNN SETTINGS -------------------------------------------------------------
 
 if [ -f "$XDG_CONFIG_HOME"/zsh/nnn_settings ]; then
@@ -173,8 +175,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-conda activate py310
 
 # -- KEYBINDS --------------------------------------------------------------
 
