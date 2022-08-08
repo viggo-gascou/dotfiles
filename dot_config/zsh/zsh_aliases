@@ -67,3 +67,6 @@ alias unowdate='date -u +"%d-%m-%Y"'
 alias nowtime='date +"%T"'
 alias unowtime='date -u +"%T"'
 
+# OTHER
+
+alias wget="wget --hsts-file ~/.cache/wget/wget-hsts"
