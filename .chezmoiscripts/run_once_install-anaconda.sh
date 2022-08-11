@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:sh-*- vim:ft=sh
+
+# ~/.local/share/chezmoi/.chezmoiscripts/run_once_install-anaconda.sh
+# =============================================================================
+# Automatically install anaconda and kattis conda environment.
+# 
 
 set -e # -e: exit on error
 
