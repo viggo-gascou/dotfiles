@@ -17,9 +17,9 @@
 
 # Function to execute when the script terminates
     function tidy_up {
-        rm -f $TF
+        rm -f "$TF"
 
-        if [ ! -z $REVOKE ]; then
+        if [ -n "$REVOKE" ]; then
             sudo -k
         fi
     }
@@ -29,8 +29,8 @@
         cat << EOF
                     
     Syntax: 
-    ./$(basename $0) -h
-    ./$(basename $0) -u USER_TO_UPDATE -i IMAGE_FILE [-p] [-r]
+    ./$(basename "$0") -h
+    ./$(basename "$0") -u USER_TO_UPDATE -i IMAGE_FILE [-p] [-r]
 
     Options:
     -h                      This help message.
@@ -39,7 +39,7 @@
     -r                      Revoke user's root privileges when script terminates.
     -u USER_TO_UPDATE       The user whose image to change. REQUIRED.
     
-    Example: ./$(basename $0) -u miyuki -i images/giraffe.jpg -p -r
+    Example: ./$(basename "$0") -u miyuki -i images/giraffe.jpg -p -r
     
 EOF
     }
@@ -75,7 +75,7 @@ EOF
 #
 
 # Exit with error if no command line options given
-    if [[ ! $@ =~ ^\-.+ ]]; then
+    if [[ ! $* =~ ^\-.+ ]]; then
         printf "\nERROR: * * * No options given. * * *\n"
         usage
         exit 1
@@ -84,7 +84,7 @@ EOF
 # Prevent an option that expects an argument, taking the next option as an argument if its argument is omitted. i.e. -u -i images/cow.jpg 
     while getopts ':hi:pru:' opt; do
         if [[ $OPTARG =~ ^\-.? ]]; then
-            printf "\nERROR: * * * '%s' is not valid argument for option '-%s'\n" $OPTARG $opt
+            printf "\nERROR: * * * '%s' is not valid argument for option '-%s'\n" "$OPTARG" "$opt"
             usage
             exit 1
         fi
@@ -113,12 +113,12 @@ EOF
                 USER_TO_UPDATE=$OPTARG 
                 ;;
             :) 
-                printf "\nERROR: * * * Argument missing from '-%s' option * * *\n" $OPTARG
+                printf "\nERROR: * * * Argument missing from '-%s' option * * *\n" "$OPTARG"
                 usage
                 exit 1
                 ;;
             ?) 
-                printf "\nERROR: * * * Invalid option: '-%s'\n * * * " $OPTARG
+                printf "\nERROR: * * * Invalid option: '-%s'\n * * * " "$OPTARG"
                 usage
                 exit 1
                 ;;
@@ -142,11 +142,11 @@ EOF
     fi
 
 # User whose image to change
-    if [ -z $USER_TO_UPDATE ]; then
+    if [ -z "$USER_TO_UPDATE" ]; then
         printf "\nERROR: * * * No user was specified. * * *\n"
         usage
         exit 1
-    elif ! id -u $USER_TO_UPDATE >/dev/null 2>&1; then 
+    elif ! id -u "$USER_TO_UPDATE" >/dev/null 2>&1; then 
         printf "\nERROR: * * * User '%s' doesn't exist.* * *\n" "$USER_TO_UPDATE"
         exit 1
     fi
@@ -175,16 +175,16 @@ EOF
 #
 
 # Write a record description (header line) to the import file
-    echo "$ER $EC $FS $VS dsRecTypeStandard:Users 2 RecordName externalbinary:JPEGPhoto" > $TF
+    echo "$ER $EC $FS $VS dsRecTypeStandard:Users 2 RecordName externalbinary:JPEGPhoto" > "$TF"
 
 # Write the record to the import file
-    echo "$USER_TO_UPDATE:$IMAGE_FILE" >> $TF
+    echo "$USER_TO_UPDATE:$IMAGE_FILE" >> "$TF"
 
 # Delete the existing `JPEGPhoto` attribute for the user 
-    sudo dscl . delete /Users/$USER_TO_UPDATE JPEGPhoto
+    sudo dscl . delete /Users/"$USER_TO_UPDATE" JPEGPhoto
 
 # Import the record updating the `JPEGPhoto` attribute for the user
-    sudo dsimport $TF /Local/Default M
+    sudo dsimport "$TF" /Local/Default M
 
 
 
@@ -193,6 +193,6 @@ EOF
 #
 
 # Optionally open the Users & Groups pane of System Preferences 
-    if [ ! -z $PREFS ]; then
+    if [ -n "$PREFS" ]; then
         open /System/Library/PreferencePanes/Accounts.prefPane
     fi
