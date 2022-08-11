@@ -7,7 +7,7 @@
 # ~/.local/share/chezmoi/remote_install.sh
 # =============================================================================
 # Remotely install dotfiles from single shell command
-# Usage : sh -c "$(curl -fsSL https://raw.githubusercontent.com/viggogascou/dotfiles/remote_install.sh)"
+# Usage : sh -c "$(curl -fsSL https://bit.ly/viggo-gascou_remote_install)"
 #
 # Reference https://bit.ly/narze_install
 
@@ -39,4 +39,4 @@ fi
 
 echo "${BOLD}Setting up dotfiles using chezmoi${NC}"
 # exec: replace current process with chezmoi init
-exec chezmoi init --apply viggogascou
+exec chezmoi init --apply viggo-gascou
