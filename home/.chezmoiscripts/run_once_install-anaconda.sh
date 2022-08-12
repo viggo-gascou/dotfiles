@@ -4,7 +4,7 @@
 
 # -*-mode:sh-*- vim:ft=sh
 
-# ~/.local/share/chezmoi/.chezmoiscripts/run_once_install-anaconda.sh
+# ~/.local/share/chezmoi/home/.chezmoiscripts/run_once_install-anaconda.sh
 # =============================================================================
 # Automatically install anaconda and kattis conda environment.
 # 
