@@ -16,20 +16,25 @@ set -e # -e: exit on error
 RED='\033[1;31m' # bold red
 GREEN='\033[32;1m' # bold green
 BOLD='\033[1m' # bold
-NC='\033[0m' # No Color
+NC='\033[0m' # no Color
 
 
-if [ "${xcode-select -p 1>/dev/null;echo $?}" = 2 ]; then
+if [ "${xcode-select -p 1>/dev/null;echo $?}" = 2 ]; then # only install Xcode Command Line Tools if not installed
   echo "${BOLD}⏳ Installing Xcode Command Line Tools...${NC}"
   xcode-select --install
 else
   echo "${GREEN}✅ XCode Command Line Tools already installed, skipping.${NC}"
 fi
 
-if command -v brew >/dev/null 2>&1; then
+if command -v brew >/dev/null 2>&1; then # only install Homebrew if not installed
   echo "${GREEN}✅ Homebrew already installed, skipping.${NC}"
-  echo "${BOLD}Installing chezmoi via homebrew.${NC}"
-  brew install chezmoi
+  
+  if command -v chezmoi >/dev/null 2>&1; then # only install chezmoi if not installed
+    echo "${GREEN}✅ Chezmoi already installed, skipping.${NC}"
+  else
+    echo "${BOLD}Installing chezmoi via homebrew.${NC}"
+    brew install chezmoi
+    fi
 else
   echo "${BOLD}⏳ Installing Homebrew...${NC}"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -37,6 +42,6 @@ else
   brew install chezmoi
 fi
 
-echo "${BOLD}Setting up dotfiles using chezmoi${NC}"
+echo "${BOLD}🛠 Setting up dotfiles using chezmoi...${NC}"
 # exec: replace current process with chezmoi init
 exec chezmoi init --apply viggo-gascou
