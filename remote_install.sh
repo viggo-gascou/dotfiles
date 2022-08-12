@@ -45,3 +45,4 @@ fi
 echo "${BOLD}🛠 Setting up dotfiles using chezmoi...${NC}"
 # exec: replace current process with chezmoi init
 exec chezmoi init --apply viggo-gascou
+
