@@ -1,6 +1,6 @@
 # -- DESCRIPTION --------------------------------------------------------------
 
-# -*-mode:sh-*- vim:ft=sh
+# -*-mode:zsh-*- vim:ft=zsh
 
 # ~/.zshrc
 # =============================================================================
@@ -59,7 +59,7 @@ zinit light-mode for \
 
 local local GH_RAW_URL='https://raw.githubusercontent.com'
 install_git_completion(){ zinit for as'completion' nocompile id-as"$1" is-snippet "$GH_RAW_URL/$2"; }
-install_local_completion() { zinit for as'completion' nocompile id-as"$1" is-snippet "$2"}
+install_local_completion() { zinit for as'completion' nocompile id-as"$1" is-snippet "$2"; }
 install_git_completion 'fd-completion/_fd'         'sharkdp/fd/master/contrib/completion/_fd'
 install_local_completion 'lsd-completion/_lsd'     '${XDG_DATA_HOME:-$HOME/.local/share}/zinit/plugins/Peltoche---lsd/lsd/autocomplete/_lsd'
 
