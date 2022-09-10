@@ -1,0 +1,17 @@
+# -- DESCRIPTION --------------------------------------------------------------
+# 
+# -*-mode:conf-toml-*- vim:ft=toml
+#
+# # ~/.local/share/chezmoi/home/.chezmoiexternal.toml
+# =============================================================================
+# Used to include files from external sources.
+#
+# See https://www.chezmoi.io/user-guide/include-files-from-elsewhere/
+#
+# {{- /* This file supports Go's text/template language. */}}
+
+[".config/kitty/kitty_search"]
+    type = "git-repo"
+    url = "https://github.com/trygveaa/kitty-kitten-search"
+    refreshPeriod = "672h"
+
