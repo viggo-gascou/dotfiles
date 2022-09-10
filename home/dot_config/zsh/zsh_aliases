@@ -55,17 +55,14 @@ alias -g ......='../../../../..'
 
 # TIME ALIASES
 
-# Gets local/UTC date and time in format DD-MM-YYYY and hh:mm:ss
+# Gets local date and time in format DD-MM-YYYY and hh:mm:ss
 alias now='date +"%d-%m-%Y Time %H:%M:%S"'
-alias unow='date -u +"%d-%m-%Y Time %H:%M:%S"'
 
 # Gets date in DD-MM-YYYY format
 alias nowdate='date +"%d-%m-%Y"'
-alias unowdate='date -u +"%d-%m-%Y"'
 
 # Gets time in hh:mm:ss format
 alias nowtime='date +"%T"'
-alias unowtime='date -u +"%T"'
 
 # OTHER
 
