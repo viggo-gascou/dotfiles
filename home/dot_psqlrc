@@ -1,13 +1,3 @@
-# -- DESCRIPTION --------------------------------------------------------------
-
-# -*-mode:sql-*- vim:ft=sql
-
-# ~/.psqlrc
-# =============================================================================
-# Executed by psql for interactive shells
-#
-# See https://www.postgresql.org/docs/current/app-psql.html
-
 
 \set HISTFILE ~/.cache/postgresql/.psql_history-:DBNAME
 
