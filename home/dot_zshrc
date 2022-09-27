@@ -80,6 +80,7 @@ zinit wait lucid from"gh-r" as"null" for \
 
 zinit wait lucid light-mode for \
   wfxr/forgit \
+  jirutka/zsh-shift-select \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
