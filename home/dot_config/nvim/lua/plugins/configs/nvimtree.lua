@@ -18,9 +18,10 @@ local options = {
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = false,
   update_cwd = true,
+  respect_buf_cwd = true,
   update_focused_file = {
     enable = true,
-    update_cwd = false,
+    update_cwd = true,
   },
   view = {
     adaptive_size = true,
