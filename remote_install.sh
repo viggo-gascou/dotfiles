@@ -20,10 +20,10 @@ NC='\033[0m' # no Color
 
 
 if [ "${xcode-select -p 1>/dev/null;echo $?}" = 2 ]; then # only install Xcode Command Line Tools if not installed. Thanks @jnovack: https://bit.ly/xcode-check
-  echo "${BOLD}⏳ Installing Xcode Command Line Tools...${NC}"
+  echo "${BOLD}🔨 Installing Xcode Command Line Tools...${NC}"
   xcode-select --install
 else
-  echo "${GREEN}✅ XCode Command Line Tools already installed, skipping.${NC}"
+  echo "${GREEN}✅ Xcode Command Line Tools already installed, skipping.${NC}"
 fi
 
 if command -v brew >/dev/null 2>&1; then # only install Homebrew if not installed
@@ -36,7 +36,7 @@ if command -v brew >/dev/null 2>&1; then # only install Homebrew if not installe
     brew install chezmoi
     fi
 else
-  echo "${BOLD}⏳ Installing Homebrew...${NC}"
+  echo "${BOLD}🍺 Installing Homebrew...${NC}"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "${BOLD}🏠 Installing chezmoi via homebrew...${NC}"
   brew install chezmoi
