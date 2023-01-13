@@ -7,5 +7,5 @@
 Execute this command to setup the dotfiles automatically with the help of chezmoi
 
 ```sh
-sh -c "$(curl -fsSL https://bit.ly/viggo-gascou_remote_install)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/viggo-gascou/dotfiles/main/remote_install.sh)"
 ```

@@ -7,7 +7,6 @@
 # ~/.local/share/chezmoi/remote_install.sh
 # =============================================================================
 # Remotely install dotfiles from single shell command
-# Usage : sh -c "$(curl -fsSL https://bit.ly/viggo-gascou_remote_install)"
 #
 # Reference https://bit.ly/narze_install
 
