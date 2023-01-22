@@ -1,0 +1,76 @@
+# -- DESCRIPTION --------------------------------------------------------------
+
+# -*-mode:ruby-*- vim:ft=ruby
+
+# ~/.local/share/chezmoi/home/.chezmoiscripts/Brewfile
+# =============================================================================
+# Automatically install Homebrew packages, formulae, fonts and more.
+#
+# See 
+#    https://github.com/joelparkerhenderson/brewfile
+#    https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f
+#    https://homebrew-file.readthedocs.io/en/latest/usage.html
+
+
+tap "eth-p/software"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+
+brew "chezmoi"
+
+brew "bat"
+brew "neovim"
+
+brew "gh"
+brew "git"
+brew "git-delta"
+
+brew "lua"
+brew "python3"
+brew "r"
+brew "node"
+brew "postgresql", restart_service: true
+brew "tree-sitter"
+
+brew "unar"
+
+brew "lsd"
+brew "ripgrep"
+brew "vivid"
+brew "wakatime-cli"
+brew "wget"
+brew "eth-p/software/bat-extras-batgrep"
+brew "eth-p/software/bat-extras-batman"
+
+brew "bash"
+brew "fish"
+brew "zsh"
+
+brew "imagemagick"
+
+cask "1password-cli"
+cask "1password"
+cask "alfred"
+cask "calibre"
+cask "hiddenbar"
+cask "hyperkey"
+
+cask "alacritty"
+cask "iterm2"
+cask "kitty"
+
+cask "mathpix-snipping-tool"
+
+cask "qlmarkdown"
+cask "syntax-highlight"
+cask "rectangle"
+
+cask "tableplus"
+cask "visual-studio-code"
+
+cask "notion"
+
+cask "font-meslo-lg-nerd-font"

@@ -19,24 +19,29 @@
 
 {{- $email := "" }} 
 {{- $username := "" }}
+{{- $gitsign := "" }}
+{{- $gitopts := "" }}
 
-{{- $question := "❔ Access 1Password to get the default GitHub email and username? y/n" -}}
+{{- $question := "❔ Access 1Password to get the default GitHub email, username and SSH key? y/n" -}}
 {{- $answer := "" -}}
-{{- $answer = promptString $question -}}
+{{- $answer := promptString "❔ Access 1Password to get the default GitHub email, username and SSH key? y/n" -}}
 {{- if eq $answer "y" "yes" "Y" "Yes" -}}
 {{-   writeToStdout (printf "⏳ Getting the default values from 1Password. \nHold on...\n") -}}
 {{-   $email = (onepasswordDetailsFields "Github_doc_e").notesPlain.value -}}
 {{-   $username = (onepasswordDetailsFields "Github_doc_u").notesPlain.value -}}
+{{-   $gitopts = (onepasswordDetailsFields "Github_opts").notesPlain.value -}}
+{{-   $gitsign = (onepasswordDetailsFields "Github Signing Key").public_key.value -}}
 {{-   writeToStdout (printf "\n✅ GitHub email set as '%s'\n" $email) -}}
 {{-   writeToStdout (printf "✅ GitHub username set as '%s'\n" $username) -}}
-{{-   writeToStdout "\nRemember to sign-out of 1Password using 'op signout'!\n" -}}
+{{-   writeToStdout (printf "\nRemember to sign-out of 1Password using 'op signout'!\n") -}}
 {{-   writeToStdout "Also lock the 1Password application!"}}
 {{- end -}}
 {{- if eq $answer "n" "no" "N" "No" -}}
-{{-   $question := "\n❔ What is your email" -}}
+{{-     writeToStdout (printf "\n")}}
+{{-   $question := "❔ What is your email" -}}
 {{-   $answer2 := "" -}}
 {{-   if $email -}}
-{{-     $answer2 = promptString $question $email -}}
+{{-     $answer2 := promptString $question $email -}}
 {{-   else -}}
 {{-     $answer2 = promptString $question -}}
 {{-   end -}}
@@ -66,6 +71,8 @@
 [data]
     email = "{{ $email }}"
     name = "{{ $username }}"
+    gitsign = "{{ $gitsign }}"
+    gitopts = """{{ $gitopts }}"""
 
 [edit]
     command = "nvim"

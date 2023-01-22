@@ -134,9 +134,7 @@ function change_icon() {
         echo -e "${BOLD} PRESS CMD+ENTER"
         echo " TO VIEW BOTH ICONS" 
         echo " SIDE BY SIDE ${NC}"
-        open -a Preview.app "$old_png_path"
-        open -a Preview.app "$new_png_path"
-        #qlmanage -p "$old_png_path" "$new_png_path" > /dev/null 2>&1
+        qlmanage -p "$old_png_path" "$new_png_path" > /dev/null 2>&1
         echo; fi
 
     # making sure the user actually wants to change the icon of the specified application

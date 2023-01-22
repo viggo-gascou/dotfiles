@@ -13,7 +13,7 @@ set -e # -e: exit on error
 
 RED='\033[1;31m' # bold red
 GREEN='\033[32;1m' # bold green
-YELLOW='\033[033;1m'
+YELLOW='\033[033;1m' # bold yellow
 BOLD='\033[1m' # bold
 NC='\033[0m' # no Color
 

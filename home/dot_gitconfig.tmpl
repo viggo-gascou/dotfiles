@@ -33,6 +33,10 @@
     # Specify the email address of the author/committer.
     email = {{ .email | quote }}
 
+    # Specify the SSH signingkey of the author/committer.
+    signingkey = {{ .gitsign | quote }}
+
+{{ .gitopts }}
 [init]
 	  defaultBranch = main
 
