@@ -1,0 +1,63 @@
+# from global justfile: List all available recipes
+default:
+    just -g --list
+
+# initialise a project using uv
+_uv-init project_name type version *args:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    TYPE="{{ type }}"
+    PROJECT_NAME="{{ project_name }}"
+    REQUESTED_VERSION="{{ version }}"
+    VALID_TYPES=("lib" "app" "package")
+    if [[ ! " ${VALID_TYPES[*]} " =~ " $TYPE " ]]; then
+        pretty_types=$(printf "'%s', " "${VALID_TYPES[@]}")
+        echo "{{ BOLD + RED }}Invalid project type: '$TYPE'. Choose from ${pretty_types%, }. {{ NORMAL }}"
+        exit 1
+    fi
+
+    # transform the python version using the major.minor version or a specific version
+    # if set to 3.11, we would set the version to ">=3.11,<3.12"
+    # or if set to "3.11.8" we would set the version to "==3.11.8"
+    if [[ "$REQUESTED_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        # Exact version match
+        PYTHON_VERSION="==$REQUESTED_VERSION"
+    else
+        # Range-based version constraint (default behaviour)
+        minor=${REQUESTED_VERSION#*.}
+        next_version="${REQUESTED_VERSION/$minor/$(($minor + 1))}"
+        PYTHON_VERSION=">=${REQUESTED_VERSION},<${next_version}"
+    fi
+
+    uv init --"$TYPE" "$PROJECT_NAME" --python "$PYTHON_VERSION" {{ args }}
+    echo "{{ GREEN }}Using Python version ${PYTHON_VERSION} {{ NORMAL }}"
+
+    cp ~/.config/just/Python.gitignore "$PROJECT_NAME"/.gitignore
+
+    echo "layout uv" >> "$PROJECT_NAME"/.envrc && direnv allow "$PROJECT_NAME"
+
+# check that uv is installed and update if needed
+_check_uv:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    has_uv={{ require("uv") }}
+
+    # Check if brew exists and if uv was installed via brew
+    if command -v brew &>/dev/null && brew list uv &>/dev/null; then
+        if brew outdated uv &>/dev/null; then
+            echo "{{ GREEN }}uv is already up to date{{ NORMAL }}"
+        else
+            echo "{{ YELLOW }}uv was installed via brew, using brew to update...{{ NORMAL }}"
+            brew upgrade uv
+        fi
+    else
+        echo "{{ YELLOW }}uv was not installed via brew, trying built-in updater...{{ NORMAL }}"
+        uv self update
+    fi
+
+# from global justfile: Create a new uv project
+[no-cd]
+@uv project_name type="app" version="3.11" *args: _check_uv
+    just -g _uv-init {{ project_name }} {{ type }} {{ version }} {{ args }}
