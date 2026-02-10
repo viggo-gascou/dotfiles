@@ -1,7 +1,7 @@
 <h1 id="my-dotfiles" align="center">
     <img width="64" src="https://assets.vgascou.co/developer.png"/><br>
     my dotfiles <br>
-    <em><sup><sub>powered by <a href="https://www.chezmoi.io/">chezmoi</a> 🏠</sub></sup></em>
+    <sup><sub><em>powered by <a href="https://www.chezmoi.io/">chezmoi </a></em>🏠</sub></sup>
 </h1>
 
 ## 🚀 Quick Setup
