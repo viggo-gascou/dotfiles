@@ -9,7 +9,7 @@
 Execute this command to setup the dotfiles automatically with the help of chezmoi
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://vgascou.co/dotfiles.sh)"
+/bin/bash -c "$(curl -fsSL https://vgascou.co/go/dotfiles.sh)"
 ```
 
 ## ⚙️ Manual Installation
